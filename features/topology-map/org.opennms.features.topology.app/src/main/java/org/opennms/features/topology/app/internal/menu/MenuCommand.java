@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2012-2014 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2014 The OpenNMS Group, Inc.
+ * Copyright (C) 2016 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,25 +26,13 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.features.topology.app.internal;
+package org.opennms.features.topology.app.internal.menu;
 
-import java.util.Dictionary;
+import java.util.List;
 
-import org.osgi.service.cm.ConfigurationException;
-import org.osgi.service.cm.ManagedService;
+import org.opennms.features.topology.api.OperationContext;
+import org.opennms.features.topology.api.topo.VertexRef;
 
-public class MenuConfigManagedService implements ManagedService {
-    
-    private CommandManager m_commandManager;
-
-    public void setCommandManager(CommandManager commandManager) {
-        m_commandManager = commandManager;
-    }
-    
-    // Implements OSGi API
-    @Override
-    public void updated(Dictionary<String,?> properties) throws ConfigurationException {
-        m_commandManager.updateMenuConfig(properties);
-    }
-
+public interface MenuCommand {
+    void execute(List<VertexRef> targets, OperationContext operationContext);
 }

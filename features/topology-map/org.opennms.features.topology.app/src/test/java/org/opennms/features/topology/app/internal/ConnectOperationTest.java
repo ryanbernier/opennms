@@ -71,12 +71,6 @@ public class ConnectOperationTest {
             return m_graphContainer;
         }
 
-        @Override
-        public boolean isChecked() {
-            // TODO Auto-generated method stub
-            return false;
-        }
-
 		@Override
 		public DisplayLocation getDisplayLocation() {
 			return DisplayLocation.MENUBAR;

@@ -37,7 +37,6 @@ import org.opennms.features.topology.api.info.InfoPanelItemProvider;
 import org.opennms.features.topology.api.info.item.DefaultInfoPanelItem;
 import org.opennms.features.topology.api.info.item.InfoPanelItem;
 import org.opennms.features.topology.api.topo.VertexRef;
-import org.opennms.features.topology.app.internal.operations.NavigateToOperation;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
@@ -88,7 +87,8 @@ public class BreadcrumbInfoPanelItemProvider implements InfoPanelItemProvider {
         button.addClickListener((event) -> {
             // only navigate if namespace is different, otherwise we switch to the same target, which does not make any sense
             if (!container.getBaseTopology().getVertexNamespace().equals(targetNamespace)) {
-                new NavigateToOperation().navigateTo(container, sourceVertex, targetNamespace);
+                // TODO MVR implement ...
+//                new NavigationMenuItem(sourceVertex, targetNamespace).execute(container);
             }
         });
         button.setCaption(sourceVertex.getLabel());

@@ -92,11 +92,6 @@ public class GroupOperationsTest {
 		}
 
 		@Override
-		public boolean isChecked() {
-			return false;
-		}
-
-		@Override
 		public DisplayLocation getDisplayLocation() {
 			return DisplayLocation.MENUBAR;
 		}

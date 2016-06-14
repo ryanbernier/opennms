@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2012-2014 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2014 The OpenNMS Group, Inc.
+ * Copyright (C) 2016 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,21 +26,43 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.features.topology.api;
+package org.opennms.features.topology.app.internal.menu;
 
-import com.vaadin.ui.UI;
+import java.util.List;
 
-/**
- * This is an API for  of all <Operation>s
- * 
- * @author Donald Desloge
- *
- */
-public interface OperationContext {
-	
-	enum DisplayLocation { MENUBAR, CONTEXTMENU, SEARCH }
+import org.opennms.features.topology.api.OperationContext;
+import org.opennms.features.topology.api.topo.VertexRef;
 
-    UI getMainWindow();
-    GraphContainer getGraphContainer();
-    DisplayLocation getDisplayLocation();
+public class DefaultMenuItem extends AbstractMenuItem {
+
+    private MenuCommand command;
+
+    public DefaultMenuItem(String label) {
+        setLabel(label);
+        setCheckable(false);
+    }
+
+    @Override
+    public boolean isVisible(List<VertexRef> targets, OperationContext operationContext) {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled(List<VertexRef> targets, OperationContext operationContext) {
+        return true;
+    }
+
+    @Override
+    public boolean isChecked(List<VertexRef> targets, OperationContext operationContext) {
+        return false;
+    }
+
+    @Override
+    public MenuCommand getCommand() {
+        return command;
+    }
+
+    public void setCommand(MenuCommand command) {
+        this.command = command;
+    }
 }

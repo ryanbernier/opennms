@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2012-2014 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2014 The OpenNMS Group, Inc.
+ * Copyright (C) 2016 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,21 +26,37 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.features.topology.api;
+package org.opennms.features.topology.app.internal;
+
+import org.opennms.features.topology.api.GraphContainer;
+import org.opennms.features.topology.api.OperationContext;
 
 import com.vaadin.ui.UI;
 
-/**
- * This is an API for  of all <Operation>s
- * 
- * @author Donald Desloge
- *
- */
-public interface OperationContext {
-	
-	enum DisplayLocation { MENUBAR, CONTEXTMENU, SEARCH }
+public class DefaultOperationContext implements OperationContext {
 
-    UI getMainWindow();
-    GraphContainer getGraphContainer();
-    DisplayLocation getDisplayLocation();
+    private final UI m_mainWindow;
+    private final GraphContainer m_graphContainer;
+    private final DisplayLocation m_displayLocation;
+
+    public DefaultOperationContext(UI mainWindow, GraphContainer graphContainer, DisplayLocation displayLocation) {
+        m_mainWindow = mainWindow;
+        m_graphContainer = graphContainer;
+        m_displayLocation = displayLocation;
+    }
+
+    @Override
+    public UI getMainWindow() {
+        return m_mainWindow;
+    }
+
+    @Override
+    public GraphContainer getGraphContainer() {
+        return m_graphContainer;
+    }
+
+    @Override
+    public DisplayLocation getDisplayLocation() {
+        return m_displayLocation;
+    }
 }

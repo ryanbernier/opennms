@@ -126,6 +126,7 @@
     <module>opennms-config-tester</module>
     <module>opennms-dao-api</module>
     <module>opennms-dao</module>
+    <module>opennms-dao-minion</module>
     <module>opennms-dao-mock</module>
     <module>opennms-icmp</module>
     <module>opennms-javamail</module>
@@ -1257,6 +1258,7 @@
     <commonsLoggingVersion>99.99.99-use-jcl-over-slf4j</commonsLoggingVersion>
     <commonsMath3Version>3.5</commonsMath3Version>
     <commonsValidatorVersion>1.3.1</commonsValidatorVersion>
+    <c3p0Version>0.9.5.2</c3p0Version>
     <cxfVersion>3.1.5</cxfVersion>
     <dnsjavaVersion>2.1.3</dnsjavaVersion>
     <dropwizardMetricsVersion>3.1.2</dropwizardMetricsVersion>
@@ -1268,6 +1270,7 @@
     <gwtVersion>2.6.1</gwtVersion>
     <gwtPluginVersion>2.6.1</gwtPluginVersion>
     <hibernateValidatorVersion>4.3.2.Final</hibernateValidatorVersion>
+    <hikaricpVersion>2.4.6</hikaricpVersion>
     <httpcoreVersion>4.3.3</httpcoreVersion>
     <httpclientVersion>4.3.6</httpclientVersion>
     <jacksonVersion>1.9.13</jacksonVersion>
@@ -1281,15 +1284,16 @@
     <karafVersion>2.4.3</karafVersion>
     <karafPaxExamVersion>2.3.9</karafPaxExamVersion>
     <felixVersion>2.3.0</felixVersion>
-    <liquibaseVersion>2.0.5</liquibaseVersion>
+    <liquibaseVersion>2.0.5-ONMS20160524b</liquibaseVersion>
     <lmaxDisruptorVersion>3.3.2</lmaxDisruptorVersion>
     <log4jVersion>99.99.99-use-log4j2</log4jVersion>
     <log4j2Version>2.5</log4j2Version>
     <minaVersion>2.0.7</minaVersion>
     <minionKarafVersion>4.0.4</minionKarafVersion>
-    <newtsVersion>1.3.6</newtsVersion>
+    <newtsVersion>1.4.0</newtsVersion>
     <paxExamVersion>4.8.0</paxExamVersion>
     <paxSwissboxVersion>1.8.2</paxSwissboxVersion>
+    <postgresqlVersion>9.4.1208</postgresqlVersion>
     <powermockVersion>1.6.4</powermockVersion>
     <oroVersion>2.0.8</oroVersion>
     <osgiVersion>5.0.0</osgiVersion>
@@ -1299,7 +1303,6 @@
     <snmp4jVersion>2.4.3</snmp4jVersion>
     <snmp4jagentVersion>2.4.2</snmp4jagentVersion>
     <smackVersion>4.0.6</smackVersion>
-    <springJaxbVersion>2.1.7</springJaxbVersion>
     <trackerVersion>0.7</trackerVersion>
     <xalanVersion>2.7.2</xalanVersion>
     <xercesVersion>2.9.1</xercesVersion>
@@ -1602,6 +1605,11 @@
         <groupId>org.opennms.core</groupId>
         <artifactId>org.opennms.core.schema</artifactId>
         <classifier>liquibase</classifier>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.opennms.core.snmp</groupId>
+        <artifactId>org.opennms.core.snmp.api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -2814,9 +2822,9 @@
         <version>2.2.2</version>
       </dependency>
       <dependency>
-        <groupId>c3p0</groupId>
+        <groupId>com.mchange</groupId>
         <artifactId>c3p0</artifactId>
-        <version>0.9.1.2</version>
+        <version>${c3p0Version}</version>
       </dependency>
       <dependency>
         <groupId>commons-beanutils</groupId>
@@ -3682,7 +3690,7 @@
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
-        <version>9.4.1208</version>
+        <version>${postgresqlVersion}</version>
       </dependency>
       <dependency>
         <groupId>rome</groupId>
@@ -3751,6 +3759,11 @@
         <groupId>org.codehaus.groovy</groupId>
         <artifactId>groovy-all</artifactId>
         <version>${groovyVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>${hikaricpVersion}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
